@@ -1,51 +1,114 @@
-# 🧩 Assignment: CSS Layouts & Responsive Web Design
+/* ==========================
+   Reset & Base Styles
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-## Overview
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f9f9f9;
+}
 
-In this assignment, you'll learn how to bring structure, flexibility, and responsiveness to your web pages using modern CSS layout techniques—**Flexbox** and **Grid**. You'll also apply **Responsive Web Design (RWD)** principles to ensure your page adapts beautifully across screen sizes and devices.
+/* ==========================
+   Header (Flexbox)
+========================== */
+.site-header {
+  background: #4a90e2;
+  color: white;
+  padding: 15px 20px;
+  display: flex;               /* Flexbox for layout */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;             /* Allows wrapping on smaller screens */
+}
 
-## Objective
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
 
-Build a responsive multi-section webpage that uses **Flexbox** and **CSS Grid** for layout and demonstrates how content adjusts across mobile, tablet, and desktop views. You'll showcase your ability to align and position content with precision, using media queries and flexible units to enhance the user experience on any device.
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
 
-## What You’ll Practice
+.nav a:hover {
+  text-decoration: underline;
+}
 
-* Structuring content using Flexbox for 1D layouts (rows or columns)
-* Using CSS Grid for complex 2D layouts
-* Applying responsive design techniques using media queries and relative units (`%, rem`, `vw`, etc.)
-* Creating layouts that gracefully adapt to different screen sizes without breaking
+/* ==========================
+   Main Layout (Grid)
+========================== */
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Main content + sidebar */
+  gap: 20px;
+  padding: 20px;
+}
 
-## Instructions
+/* Content Grid */
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
 
-Create a responsive webpage that contains multiple sections—such as a header, navigation bar, content area, sidebar, and footer. You are encouraged to use Flexbox in one part of the page and Grid in another (e.g., Grid for the main layout and Flexbox for cards or navigation alignment).
+/* Card Styling */
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-Make sure your layout:
+/* Sidebar Styling */
+.sidebar {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
 
-* Looks good on **desktop**, **tablet**, and **mobile**
-* Uses media queries to adjust column layout, spacing, or visibility
-* Demonstrates thoughtful content placement using both layout models
+/* ==========================
+   Footer
+========================== */
+.site-footer {
+  text-align: center;
+  background: #eee;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
 
-Avoid using any CSS frameworks or libraries—build everything with raw CSS.
+/* ==========================
+   Responsive Breakpoints
+========================== */
 
-## Deliverables
+/* Tablet */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr; /* Stack main + sidebar */
+  }
+  .site-header {
+    flex-direction: column; /* Stack logo + nav */
+    gap: 10px;
+    text-align: center;
+  }
+}
 
-Submit the following:
-
-* `index.html`: Your HTML5 structure
-* `style.css`: Your responsive CSS file with Flexbox, Grid, and media queries
-
-The code should demonstrate:
-
-* Clear use of Flexbox and Grid
-* Responsiveness with proper breakpoints
-* Clean, maintainable CSS structure with helpful comments
-
-## Tips
-
-* Effective use of Flexbox and CSS Grid layout techniques
-* Visual clarity and logical content flow across screen sizes
-* Proper use of media queries and responsive units
-* Code readability, organization, and best practices
-* Creativity and attention to layout detail
-
-
+/* Mobile */
+@media (max-width: 600px) {
+  .nav ul {
+    flex-direction: column;  /* Stack nav links */
+    gap: 10px;
+    align-items: center;
+  }
+}
